@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="eaguiler" id="Local-1" context="local">
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Andorra La Vella" />
+			<column name="COUNTRY" type="VARCHAR" value="Andorra" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Buenos Aires" />
+			<column name="COUNTRY" type="VARCHAR" value="Argentina" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1996" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Tucuman" />
+			<column name="COUNTRY" type="VARCHAR" value="Argentina" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Brussels" />
+			<column name="COUNTRY" type="VARCHAR" value="Belgium" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="2010" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="São Paulo" />
+			<column name="COUNTRY" type="VARCHAR" value="Brazil" />
+			<column name="LANGUAGE" type="VARCHAR" value="PT" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Uberlândia" />
+			<column name="COUNTRY" type="VARCHAR" value="Brazil" />
+			<column name="LANGUAGE" type="VARCHAR" value="PT" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Concepción" />
+			<column name="COUNTRY" type="VARCHAR" value="Chile" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Santiago de Chile" />
+			<column name="COUNTRY" type="VARCHAR" value="Chile" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1996" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Temuco" />
+			<column name="COUNTRY" type="VARCHAR" value="Chile" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Bogotá" />
+			<column name="COUNTRY" type="VARCHAR" value="Colombia" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Medellín" />
+			<column name="COUNTRY" type="VARCHAR" value="Colombia" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Milan" />
+			<column name="COUNTRY" type="VARCHAR" value="Italy" />
+			<column name="LANGUAGE" type="VARCHAR" value="IT" />
+			<column name="YEAR" type="NUMBER(4)" value="2000" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Rome" />
+			<column name="COUNTRY" type="VARCHAR" value="Italy" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Luxemburg" />
+			<column name="COUNTRY" type="VARCHAR" value="Luxembourg" />
+			<column name="LANGUAGE" type="VARCHAR" value="FR" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="CARSO" />
+			<column name="COUNTRY" type="VARCHAR" value="Mexico" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Querétaro" />
+			<column name="COUNTRY" type="VARCHAR" value="Mexico" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Sevilla" />
+			<column name="COUNTRY" type="VARCHAR" value="Mexico" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Tetouan" />
+			<column name="COUNTRY" type="VARCHAR" value="Morocco" />
+			<column name="LANGUAGE" type="VARCHAR" value="ARB" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Amsterdam" />
+			<column name="COUNTRY" type="VARCHAR" value="Netherlands" />
+			<column name="LANGUAGE" type="VARCHAR" value="NL" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Lima" />
+			<column name="COUNTRY" type="VARCHAR" value="Peru" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="2010" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Lisbon" />
+			<column name="COUNTRY" type="VARCHAR" value="Portugal" />
+			<column name="LANGUAGE" type="VARCHAR" value="PT" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="A Coruña" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="GL" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Alicante" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Alicante 2" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Barcelona" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Barcelona BPO" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Bilbao" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="EU" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Ciudad Real" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Madrid" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1996" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Murcia" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="2007" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Santiago de Compostela" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="2017" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Sevilla" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Valencia" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="CA" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Valladolid" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Zaragoza" />
+			<column name="COUNTRY" type="VARCHAR" value="Spain" />
+			<column name="LANGUAGE" type="VARCHAR" value="ES" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Glasgow" />
+			<column name="COUNTRY" type="VARCHAR" value="United Kingdom" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="London" />
+			<column name="COUNTRY" type="VARCHAR" value="United Kingdom" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Milton Keynes" />
+			<column name="COUNTRY" type="VARCHAR" value="United Kingdom" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Birmingham" />
+			<column name="COUNTRY" type="VARCHAR" value="United States of America" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Boston" />
+			<column name="COUNTRY" type="VARCHAR" value="United States of America" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+		<insert tableName="OFFICE">
+			<column name="NAME" type="VARCHAR" value="Washington D.C." />
+			<column name="COUNTRY" type="VARCHAR" value="United States of America" />
+			<column name="LANGUAGE" type="VARCHAR" value="EN" />
+			<column name="YEAR" type="NUMBER(4)" value="1990" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

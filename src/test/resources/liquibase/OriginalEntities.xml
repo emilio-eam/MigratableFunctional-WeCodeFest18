@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="eaguiler" id="OriginalEntities">
+		<createTable tableName="OFFICE">
+			<column name="ID" type="INTEGER(3)" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="OFFICE_PK"/>
+			</column>
+			<column name="NAME" type="VARCHAR(30)"/>
+            <column name="COUNTRY" type="VARCHAR(30)"/>
+            <column name="LANGUAGE" type="VARCHAR(3)"/>
+            <column name="YEAR" type="INTEGER(4)"/>
+		</createTable>
+
+        <createIndex indexName="IDX_OFFICE_COUNTRY"
+        	tableName="OFFICE">
+            <column name="COUNTRY"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
