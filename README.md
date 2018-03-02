@@ -1,7 +1,7 @@
-Muestra de c贸mo modificar una funci贸n con una query a BBDD para convertirla en una funci贸n reutilizable en distintos casos:
- 	- Cambio del repositorio de datos. Como podr铆a ser de una BBDD a una lista interna o a un RDD de Spark.
+Muestra de c髆o modificar una funci髇 con una query a BBDD para convertirla en una funci髇 reutilizable en distintos casos:
+ 	- Cambio del repositorio de datos. Como podr韆 ser de una BBDD a una lista interna o a un RDD de Spark.
 	- Cambio de usarla como servicio a usarla como parte de un batch
-	- Cambio para usarla como parte de una red de procesamiento de eventos (aplicable s贸lo porque la funci贸n se puede aplicar a todos los datos o a varias partes, con una distribuci贸n cualquiera).
-	- Cambio para poder cambiar la propia funcionalidad aplicada sin modificar la propia funci贸n.
+	- Cambio para usarla como parte de una red de procesamiento de eventos (aplicable s髄o porque la funci髇 se puede aplicar a todos los datos o a varias partes, con una distribuci髇 cualquiera).
+	- Cambio para poder cambiar la propia funcionalidad aplicada sin modificar la propia funci髇.
 
-En todos los casos, los datos se proporcionan como una View de forma que la vista intente aplicar el mejor m茅todo para ejecutar la l贸gica de forma transparente a la funci贸n.
+En todos los casos, los datos se proporcionan como una View de forma que la vista intente aplicar el mejor m閠odo para ejecutar la l骻ica de forma transparente a la funci髇.
