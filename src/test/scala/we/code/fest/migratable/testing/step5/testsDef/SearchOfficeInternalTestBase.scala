@@ -16,8 +16,7 @@ abstract class SearchOfficeInternalTestBase
   extends SearchOfficeTestBase {
 
   def createSource(): Iterable[Office]
-  val rulesService = new RulesSearchOfficeService
-  val internalService = (t: Iterable[Office], country: String, lang: String) => rulesService.findOffice(DefaultRules.rules, t, Option(country), Option(lang))
+  val internalService = (t: Iterable[Office], country: String, lang: String) => RulesSearchOfficeService.findOffice(DefaultRules.rules, t, Option(country), Option(lang))
   val toNameTraversable: Iterable[Office] => TraversableOnce[String] = _.map(_.name)
 
   override lazy val searchService = SearchOfficeInternalTestBase.getSearchOfficeService(internalService, createSource)

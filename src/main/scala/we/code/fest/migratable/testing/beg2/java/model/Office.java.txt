@@ -1,0 +1,27 @@
+package we.code.fest.migratable.testing.beg2.java.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+
+@Entity(name="OFFICE")
+@Access(AccessType.FIELD)
+public class Office implements Serializable {
+	@Id
+	private int id;
+	@Column
+	private String name;
+	@Column
+	private String country;
+	@Column
+	private String language;
+	@Column
+	private int year;
+
+	/* getters y setters */
+
+	/* equals y hashcode */
+
+}

@@ -1,0 +1,9 @@
+After modifying our function so it can be slightly reusable, let's move towards looking like a real Scala function. We're going to start with a case class.
+
+To do so, we are recreating the Office class as a case class (with just the required fields: name, country, language and year; the id field is only needed in the RDBMS table) and create a new OfficeEntity which inherits from the Office class and holds the configuration.
+
+In order to do so, there are some points to consider:
+  - the source should be created with OfficeEntity (not Office) since that one holds the definition.
+  - either our function can receive an JinqIterator of any class inheriting Office or the source iterator is cast.
+  - sinc we have a case class and not getters, our code accesses fields and not get methods. We need to update our code.
+  - the RDBMS accessing library can no longer map our lambdas to queries since a) it works with OfficeEntity instead of Office and b) the library recognizes getters. This can be solved registering those accesses into the JinqProvider.

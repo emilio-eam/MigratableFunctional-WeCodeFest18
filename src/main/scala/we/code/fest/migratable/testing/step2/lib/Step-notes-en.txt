@@ -1,0 +1,3 @@
+To show how we can create different functionalities joining different functions we add a new functionality (requirement): a Service which has the same parameters but returns just the name.
+
+In order to achieve it, we change again our function so it does not convert the data to the final type but return the intermediate one. This way, we can compose our function with a new one (_.select(_.name)) which gets the name and get all the functionality in a single Database call (and not in the Scala side).

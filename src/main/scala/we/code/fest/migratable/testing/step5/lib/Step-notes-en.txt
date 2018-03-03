@@ -1,0 +1,9 @@
+As a last step, let's try maximizing code reuse in a very complex scenario: changing the requisites.
+
+In order to achieve a requisite change we'll need to change some code, and to keep it as easy as possible and to do so it would be desirable to get rid of null checks. Scala provides the Option type to help with this.
+
+Once changed the interface to work with Option[String] for each nullable input, it's time to address the main point: getting as many explicit requisites code apart as we can,
+
+To do so, let's create a new Rule type so it can hold each requisite case: when it does apply and how to apply it. That can easily be done because all the requisite cases share their input and output types.
+
+Using that Rule type, our function can be expressed as a function that, given some data and rules, select applying rules and apply them on the data. That way we can keep both the function and the code using it even when we get more requisite cases (like the previous ones) by changing the rules. That works on the different scenarios we have seen previously.

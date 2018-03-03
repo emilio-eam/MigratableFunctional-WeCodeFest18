@@ -1,0 +1,17 @@
+Tras hacer que la función trabaje sobre una case class, el siguiente paso es quitar su dependencia contra la librería jinq y hacer que trabaje sobre colecciones estándar de Scala.
+
+Dado que hasta ahora estábamos trabajando con iteradores y normalmete se trabaja con colecciones, lo más práctico sería utilizar TraversableOnce o Iterable. TraversableOnce es compatible con Iterator, por lo que sería compatible con los tipos que teníamos, pero en algunos casos podría tener efectos no deseados debido a que algunos métodos están implementados como wrappers (y no directamente en la colección) y eso podría dar lugar a efectos no deseados.
+
+Además, si cargamos todos los datos en una colección de Scala (como por ejemplo una List) necesitaríamos traer todos los datos a memoria y procesarlos allí; esto no es planteable en muchos casos dado que penalizaría el rendimiento (e incluso podría no ser realizable por volumen de datos).
+
+Hay varias opciones que se podrían considerar, y una interesante son las View (ListView, SetView, IterableView) dado que tienen la misma interfaz que las colecciones estándar (una ListView es una List) y su planteamiento es guardar las operaciones (filtros, transformaciones) en vez de realizarlas en el momento de la llamada; la View puede realizar las operaciones cuando considere (a más tardar al realizar operaciones finales, las que consumen los datos o los mueven fuera de la colección, incluyendo la creación de nuevas colecciones). Un punto interesante sobre las View es que el disponer de una View de una colección inmutable no garantiza que siempre devuelva los mismos datos: aunque se la vea como inmutable, no tiene por qué serlo por debajo (lo que encaja bastante bien con una BBDD compartida con otros sistemas).
+
+El JinqIterator se lo puede envolver en un View sin forzar el uso de la View precisamente porque se pueden retener las operaciones hasta que se necesiten los datos, de forma que se lance la query cuando ya no haya más elementos a añadir.
+
+Una vez modificado el servicio para funcionar con un Iterable, la función ya dejó de ser una función específica de acceso a BBDD sino que es una función normal sobre colecciones de Scala (como podría ser una List).
+
+Es más, dado que tenemos un planteamiento para que nuestra función que trabaja sobre una colección de una case class normal lo haga de forma adaptada a BBDD lanzando queries SQL, podemos reutilizar el mismo planteamiento para trabajar con otros repositorios de datos, como un RDD de Spark.
+
+Una vez que hemos convertido nuestra función en una función normal de Scala que trabaja sobre una colección, podemos utilizar también nuestra función como un paso dentro de un proceso Batch. Y además, como va a dar el mismo resultado aunque le pasemos la entrada partida en muchos fragmentos, la podemos utilizar como agente en una red de procesamiento asíncrono (por ejemplo como un Actor en Akka).
+
+A modo de conclusión, podríamos decir que se podemos coger una función que trabaja sobre una tabla de BBDD y reconvertirla en una función reutilizable manteniendo las queries originales, se puede plantear lo mismo con cualquier función estándar y hacerla funcionar sobre distintos orígenes de datos o en distintos escenarios (y en algunos casos sin necesitar modificarla).

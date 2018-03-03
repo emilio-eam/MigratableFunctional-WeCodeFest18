@@ -5,7 +5,7 @@ import org.jinq.orm.stream.scala.JinqIterator
 
 class JinqIteratorSearchOfficeService extends InternalSearchOfficeService {
 
-  override def findOffice(officeData: JinqIterator[Office], country: String, language: String): JinqIterator[Office] = {
+  override def findOffice(officeData: JinqIterator[Office], country: String, language: String): List[Office] = {
 		var newOfficeData = officeData
 		if ((country != null) && (!country.isEmpty())) {
 			newOfficeData = newOfficeData.where(_.getCountry() == country)
@@ -13,7 +13,7 @@ class JinqIteratorSearchOfficeService extends InternalSearchOfficeService {
 		if ((language != null) && (!language.isEmpty())) {
 			newOfficeData = newOfficeData.where(_.getLanguage() == language)
 		}
-		return newOfficeData
+		return newOfficeData.toList
 	}
 
 }

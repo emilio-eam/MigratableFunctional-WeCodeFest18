@@ -22,9 +22,9 @@ class JinqSearchOfficeTest extends SearchOfficeTestBase
           )
       )
 
-  override val searchService = new JinqSearchOfficeService(createSource)
+  override lazy val searchService = new JinqSearchOfficeService(jinqProvider.getEntityManager(), jinqProvider.getJinqProvider())
 
-  def createSource() = jinqProvider.createJinqIterator
+  //def createSource() = jinqProvider.createJinqIterator
 
   override def beforeAll(): Unit = super.beforeAll()
 

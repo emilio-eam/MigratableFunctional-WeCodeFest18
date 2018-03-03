@@ -1,0 +1,3 @@
+En este paso se tiene un código equivalente que funcione sobre la mayoría de RDBMS (cualquiera que cumpla con el estándar SQL).
+
+Además, como ahora lo que hay es un Where que recibe un parámetro, se puede componer este where con sólo 2 "if" (y no los 2*2 if/elsif/else del caso original).

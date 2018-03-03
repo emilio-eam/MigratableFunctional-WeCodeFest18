@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION findOffice (
+  country VARCHAR2,
+  language VARCHAR2)
+  RETURN SYS_REFCURSOR
+AS
+ret_cursor SYS_REFCURSOR;
+BEGIN
+IF country IS NOT NULL AND NOT (country = '') AND language IS NOT NULL AND NOT (language = '') THEN
+   OPEN ret_cursor FOR SELECT * FROM OFFICE O WHERE O.COUNTRY = country AND O.LANGUAGE = language;
+ELSIF country IS NOT NULL AND NOT (country = '') THEN
+   OPEN ret_cursor FOR SELECT * FROM OFFICE O WHERE O.COUNTRY = country;
+ELSIF language IS NOT NULL AND NOT (language = '') THEN
+   OPEN ret_cursor FOR SELECT * FROM OFFICE O WHERE O.LANGUAGE = language;
+ELSE
+   OPEN ret_cursor FOR SELECT * FROM OFFICE;
+END IF;
+   RETURN ret_cursor;
+END findOffice;

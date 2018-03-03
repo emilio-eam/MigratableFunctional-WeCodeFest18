@@ -1,0 +1,30 @@
+package we.code.fest.migratable.testing.beg2.java.lib;
+
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Predicate;
+
+public class SearchOfficeService {
+
+	private EntityManager em;
+
+	public Collection<Office> findOffice(String country, String lang) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Office> query = cb.createQuery(Office.class);
+		Root<Office> ro = query.from(Office.class);
+		List<Predicate> restrictions = new ArrayList<Predicate>();
+		if ((country != null) && !country.isEmpty()) {
+			restrictions.add(cb.equal(ro.get("country"), country));
+		}
+		if ((lang != null) && !lang.isEmpty()) {
+			restrictions.add(cb.equal(ro.get("language"), lang));
+		}
+		query = query.where(restrictions.toArray(new Predicate[restrictions.size()]));
+		return em.createQuery(query).getResultList();
+	}
+
+	/* getters y setters del EntityManager */
+
+}

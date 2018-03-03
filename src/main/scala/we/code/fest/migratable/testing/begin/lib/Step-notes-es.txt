@@ -1,0 +1,3 @@
+Este es el punto de partida en Scala.
+
+En ella tenemos el código equivalente, con la salvedad de que se está utilizando la librería Jinq (http://www.jinq.org) por encima de JPA (y no JPA directamente) para que nos permita hacer la query en forma funcional.

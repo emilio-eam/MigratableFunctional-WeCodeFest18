@@ -1,0 +1,3 @@
+Para el siguiente paso vamos a añadir un nuevo servicio que recibe los mismos parámetros pero, en vez de resolver una lista con todos los campos, sólo devuelve uno de ellos (el campo name).
+
+Para implementarla, vamos a cambiar la función para que no devuelva la lista definitiva sino el dato intermedio. Así, podemos componer esta función con un _toList para cubrir el servicio original y componerla con una segunda función que haga el procesamiento (_.select(_.name)) de forma que se pueda conseguir este procesamiento directamente en la llamada a la BBDD.

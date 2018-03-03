@@ -1,0 +1,3 @@
+This step goes from the original code to an approach which can run over most RDBMS (Any SQL standard compliant RDBMS).
+
+Also, since the where goes on an object it allows coding just 2 "if" cases for 2 requisites (instead of the 2*2 if/elsif/else cases in the original one).

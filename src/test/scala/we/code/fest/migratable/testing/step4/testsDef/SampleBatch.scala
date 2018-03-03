@@ -1,17 +1,16 @@
-package we.code.fest.migratable.testing.step5.testsDef
+package we.code.fest.migratable.testing.step4.testsDef
 
-import we.code.fest.migratable.testing.step5.lib.RulesSearchOfficeService
-import we.code.fest.migratable.testing.step5.model.Office
+import we.code.fest.migratable.testing.step4.lib.IterableSearchOfficeService
+import we.code.fest.migratable.testing.step4.model.Office
 import com.everis.scala.testing.jinq.helper.TestsJinqProvider
-import we.code.fest.migratable.testing.step5.entities.OfficeEntity
+import we.code.fest.migratable.testing.step4.entities.OfficeEntity
 import com.everis.scala.testing.jinq.helper.HibernateJpaProvider
 import org.hibernate.cfg.AvailableSettings
-import we.code.fest.migratable.testing.step5.lib.DefaultRules
 
 object SampleBatch {
 
   def main(args: Array[String]) = {
-    val batchFunction = RulesSearchOfficeService.findOffice(DefaultRules.rules, _: Iterable[_ <: Office], Option("Spain"), None)
+    val batchFunction = new IterableSearchOfficeService().findOffice(_: Iterable[_ <: Office], "Spain", null)
 
     val sourceFunction = initSource()
     val processFunction = batchFunction

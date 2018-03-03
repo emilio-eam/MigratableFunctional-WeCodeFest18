@@ -1,0 +1,9 @@
+Tras haber convertido nuestra función en algo que ya parece reutilizable, vamos a empezar a modificar el código para que parezca un caso más estándar: utilizar una case class.
+
+Para ello, vamos a redefinir nuestra clase Office como case class (ya sólo con los campos necesarios, el campo id que es únicamente la PK en la BBDD lo dejamos fuera) y añadimos una nueva clase, OfficeEntity, que hereda de Office y tiene la configuración.
+
+En este sentido, hay que tener en cuenta varias cosas:
+  - la fuente tiene que montar el JinqIterable a partir de OfficeEntity, dado que ésta es la entidad (y no Office).
+  - el servicio tiene que aceptar un JinqIterable de Office o de algo que herede de Office (o alternativamente castear el JinqIterable obtenido).
+  - ya no se accede a los datos mediante getters, sino mediante los campos. Hay que actualizar el servicio (y la función que obtiene el nombre).
+  - la librería no es capaz de reconocer los accesos a los métodos de Office porque a) trabaja con OfficeEntity y no con Office y b) los reconoce si tiene sintaxis tipo "get". Esto lo podemos solventar registrando los métodos correspondientes de la clase Office en el JinqProvider.

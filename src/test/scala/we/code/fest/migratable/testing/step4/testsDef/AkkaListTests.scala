@@ -1,8 +1,8 @@
-package we.code.fest.migratable.testing.step5.testsDef
+package we.code.fest.migratable.testing.step4.testsDef
 
-import we.code.fest.migratable.testing.step5.lib.InternalSearchOfficeService
-import we.code.fest.migratable.testing.step5.model.Office
-import we.code.fest.migratable.testing.step5.lib.RulesSearchOfficeService
+import we.code.fest.migratable.testing.step4.lib.InternalSearchOfficeService
+import we.code.fest.migratable.testing.step4.model.Office
+import we.code.fest.migratable.testing.step4.lib.IterableSearchOfficeService
 import akka.actor.Actor
 import akka.actor.ActorRef
 import scala.collection.mutable.ListBuffer
@@ -11,23 +11,22 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import akka.actor.ActorSystem
 import akka.actor.Props
-import we.code.fest.migratable.testing.step5.lib.SearchOfficeService
-import we.code.fest.migratable.testing.step5.lib.SearchOfficeNameService
+import we.code.fest.migratable.testing.step4.lib.SearchOfficeService
+import we.code.fest.migratable.testing.step4.lib.SearchOfficeNameService
 import org.scalatest.BeforeAndAfterEach
-import we.code.fest.migratable.testing.step5.lib.DefaultRules
 
 class AkkaListTests extends SearchOfficeTestBase with BeforeAndAfterEach {
 
   override val searchService = SearchOfficeService((c, l) => {
-    AkkaListTests.country = Option(c)
-    AkkaListTests.language = Option(l)
+    AkkaListTests.country = c
+    AkkaListTests.language = l
     allData.foreach(AkkaListTests.searchFlowActor ! _)
     Thread.sleep(1000)
     OfficeReceiver.getAndRemove
   })
   override val searchNameService = SearchOfficeNameService((c, l) => {
-    AkkaListTests.country = Option(c)
-    AkkaListTests.language = Option(l)
+    AkkaListTests.country = c
+    AkkaListTests.language = l
     allData.foreach(AkkaListTests.searchNamesFlowActor ! _)
     Thread.sleep(1000)
     StringReceiver.getAndRemove
@@ -46,9 +45,10 @@ object AkkaListTests {
 
   //implicit val timeout: Timeout = Timeout(1 seconds)
   val system = ActorSystem("AkkaTestSystem")
-  var country = Option("")
-  var language = Option("")
-  val internalFunction = RulesSearchOfficeService.findOffice(DefaultRules.rules, _: Iterable[Office], country, language)
+  val internalService = new IterableSearchOfficeService
+  var country = ""
+  var language = ""
+  val internalFunction = internalService.findOffice(_: Iterable[Office], country, language)
 
   val searchFlowActor = system.actorOf(Props[SearchFlowActor])
   val searchNamesFlowActor = system.actorOf(Props[SearchNamesFlowActor])

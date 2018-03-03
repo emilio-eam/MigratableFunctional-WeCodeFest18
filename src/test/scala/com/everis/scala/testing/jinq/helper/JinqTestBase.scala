@@ -43,7 +43,7 @@ class TestsJinqProvider[T](entityClass: Class[T], jpaProvider: JpaProvider) {
   private var emf: EntityManagerFactory = _
 
   def init(): Unit = {
-    val newDs = JdbcConnectionPool.create("jdbc:h2:mem:liquibaseSchema;TRACE_LEVEL_SYSTEM_OUT=1", "SimpleWebDB", "SimpleWebDB")
+    val newDs = JdbcConnectionPool.create("jdbc:h2:mem:liquibaseSchema" + TestsJinqProvider.getCounter() + ";TRACE_LEVEL_SYSTEM_OUT=1", "TestDB", "TestDB")
     // Update Datasource with Liquibase
     val conn = newDs.getConnection
     try {
@@ -74,6 +74,10 @@ class TestsJinqProvider[T](entityClass: Class[T], jpaProvider: JpaProvider) {
 
   def createStandardIterable(): Iterable[T] = new JinqStandardIterable(createJinqIterator)
 
+  def getJinqProvider(): JinqJPAScalaIteratorProvider = jinqProvider.get
+
+  def getEntityManager(): EntityManager = em
+
   def freeResources(): Unit = {
     if (ds.isDefined) {
       try {
@@ -86,11 +90,15 @@ class TestsJinqProvider[T](entityClass: Class[T], jpaProvider: JpaProvider) {
         jinqProvider = Option.empty
         em = null
         emf = null
-        Thread.sleep(2000) // force wait to remove Database so it can be recreated later
       }
     }
   }
 
+}
+
+object TestsJinqProvider {
+  private var counter = 0
+  def getCounter(): Int = {counter += 1; return counter}
 }
 
 trait JpaProvider {

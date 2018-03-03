@@ -1,0 +1,3 @@
+In this step we move from dependency injection to function composition.
+
+It is basically the same Java service but working on Jinq (http://www.jinq.org) instead of working directly on JPA, so we can code the queries functionally.

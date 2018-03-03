@@ -7,7 +7,7 @@ import we.code.fest.migratable.testing.step5.model.Office
   */
 case class Rule(appliesTo: Condition => Boolean, content: Condition => (Office => Boolean))
 
-class RulesSearchOfficeService {
+object RulesSearchOfficeService {
 
   def findOffice(rules: Iterable[Rule], officeData: Iterable[Office], country: Option[String], language: Option[String]): Iterable[Office] = findOffice(rules, officeData, new Condition(country, language))
 
@@ -22,10 +22,10 @@ class RulesSearchOfficeService {
 object DefaultRules {
   val rules = List(
     Rule(_.country.exists(!_.isEmpty),
-      condition => office => condition.country.contains(office.country)
+      condition => {val country = condition.country.get; office => country == office.country}
     ),
     Rule(_.language.exists(!_.isEmpty),
-      condition => office => condition.language.contains(office.language)
+      condition => {val language = condition.language.get; office => language == office.language}
     )
   )
 }

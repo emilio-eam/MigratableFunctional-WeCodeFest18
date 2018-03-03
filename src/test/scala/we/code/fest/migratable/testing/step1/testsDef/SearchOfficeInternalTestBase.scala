@@ -19,10 +19,10 @@ abstract class SearchOfficeInternalTestBase
 
   override lazy val searchService = SearchOfficeInternalTestBase.getSearchOfficeService(internalService, createSource)
 
-  class InternalServiceToFunction(service: InternalSearchOfficeService) extends ((JinqIterator[Office], String, String) => JinqIterator[Office]) {
-    override def apply(data: JinqIterator[Office], country: String, language: String): JinqIterator[Office] = service.findOffice(data, country, language)
+  class InternalServiceToFunction(service: InternalSearchOfficeService) extends ((JinqIterator[Office], String, String) => List[Office]) {
+    override def apply(data: JinqIterator[Office], country: String, language: String): List[Office] = service.findOffice(data, country, language)
   }
-  implicit def internalServiceToFunction(service: InternalSearchOfficeService): (JinqIterator[Office], String, String) => JinqIterator[Office] = new InternalServiceToFunction(service)
+  implicit def internalServiceToFunction(service: InternalSearchOfficeService): (JinqIterator[Office], String, String) => List[Office] = new InternalServiceToFunction(service)
 
 }
 
@@ -35,7 +35,7 @@ object SearchOfficeInternalTestBase {
   implicit def andThenThreeParameters[T1, T2, T3, R](f: (T1, T2, T3) => R): ComposableThreeParameterFunction[T1, T2, T3, R] = new ComposableThreeParameterFunction(f)
   implicit def fromAndThenThreeParameters[T1, T2, T3, R](comp: ComposableThreeParameterFunction[T1, T2, T3, R]): (T1, T2, T3) => R = comp.function
 
-  def getSearchOfficeService[T <: TraversableOnce[_ <: Office]](appliedSearchService: (T, String, String) => T, getData: () => T): SearchOfficeService =
+  def getSearchOfficeService[T <: TraversableOnce[_ <: Office]](appliedSearchService: (T, String, String) => List[Office], getData: () => T): SearchOfficeService =
     SearchOfficeService(
       withNewSource(
         appliedSearchService,

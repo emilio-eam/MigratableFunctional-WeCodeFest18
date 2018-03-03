@@ -1,0 +1,17 @@
+After getting our function to work with a case class, let's get rid of the jinq library in the function so it works with standard Scala types.
+
+Since we have iterators and this is not what we usually use to hold data, we may go for a TraversableOnce or an Iterable to be compatible with most Scala collections. TraversableOnce is compatible with Iterator, but it may not work as expected since some methods are implemented as wrappers (and not directly in the collection) and that may interfere in our collection.
+
+Also, if we get all our data to a Scala collection (such as a List) we are getting all data to memory and process it there; this is not desired, since it's performance would be quite bad and may lead to OutOfMemory problems.
+
+There are some other options to consider, and one of the interesting ones are the Views (ListView, SetView, IterableView, ...) since they have the same interface as the standard collections (a ListView is a List) and their model is to keep track of the operations sent to the collection but not process them as received; instead, do them as the view itself consideres (the lattest possible would be on final operations which consume data or send it outside the collection itself, even to create a new immutable collection). One interesting point about views is that you may see a View as an immutable collection, but it may change in the background (such as a RDBMS shared with third-parties).
+
+Since a View can hold the operations until the data is needed, we can wrap our JinqIterator in a View and send the query when the data is to be used.
+
+After changing the service so it works with an Iterable, our function is no longer a RDBMS specific function. It can work with any Scala collection, such as a standard List.
+
+Even more, since we have a function wich works on a collection of a simple case class type adapting its execution to launch SQL queries instead of processing in the Scala process, we may try the same approach to work on different sources, such as a Spark RDD.
+
+That said, since our function is a standard function working on a collection, our function can be part of a batch (as a step in the process flow). And we can put it as an agent in an asynchronous network (such as an Actor in an Akka ecosystem) because our function gives the same results no matter how many blocks you split the input into.
+
+As a conclusion, we may say that if we can take a function working only over a RDBMS Table and translate it into a function working on a standard collection (keeping the original SQL query), we can go the other way round: make our standard function work over different sources or in different scenarios (and in some times, without changing it).

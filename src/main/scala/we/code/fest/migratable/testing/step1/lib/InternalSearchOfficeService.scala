@@ -5,9 +5,9 @@ import org.jinq.orm.stream.scala.JinqIterator
 
 trait InternalSearchOfficeService {
 
-  def findOffice(officeData: JinqIterator[Office], country: String, language: String): JinqIterator[Office]
+  def findOffice(officeData: JinqIterator[Office], country: String, language: String): List[Office]
 
-  implicit class InternalSearchOfficeServiceToFunctionAdapter(service: InternalSearchOfficeService) extends ((JinqIterator[Office], String, String) => JinqIterator[Office]) {
+  implicit class InternalSearchOfficeServiceToFunctionAdapter(service: InternalSearchOfficeService) extends ((JinqIterator[Office], String, String) => List[Office]) {
     override def apply(t: JinqIterator[Office], country: String, language: String) = service.findOffice(t, country, language)
   }
 

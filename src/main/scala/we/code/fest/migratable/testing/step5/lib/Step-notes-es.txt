@@ -1,0 +1,9 @@
+Por último, vamos a ver algo que ayuda a reutilizar la función en el peor de los escenarios: que los requisitos de negocio cambien.
+
+Para cambiar los requisitos habrá que cambiar algunos elementos, y para ello interesa que esta parte sea lo más sencillo posible de manejar. En este sentido, tener que manejar campos que pueden llegar como nulos no es típico en Scala y obliga a hacer comprobaciones expresas, mientras que Scala proporciona el tipo Option para manejar estos casos y ofrece varias ayudas.
+
+Una vez cambiada la interfaz para recibir Option[String] en cada campo que puede venir a nulo, vamos a la parte principal: quitar la parte más cercana a los requisitos de negocio fuera del código en la medida de lo posible,
+
+Para ello, vamos a definir un tipo Rule en el que definir cada caso de los requisitos: cuándo aplicarla y qué aplicar. Esto puede hacerse de forma bastante sencilla dado que todas las reglas tienen el mismo tipo de entrada y de salida.
+
+Nuestra función pasa entonces a ser una función que, para unos datos y reglas concretos, qué reglas aplicar y aplicar las reglas sobre los datos. De este modo, podemos conservar la función (y el código montado sobre ésta) aplicándole un conjunto de reglas diferentes. Este caso sigue funcionando con todos los escenarios vistos anteriormente.
